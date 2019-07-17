@@ -12,7 +12,7 @@ setRangeHighlight(range);
 sel.removeAllRanges();
 ```
 此时可以看到鼠标选中的文本被高亮，并且控制台输出了一串时间戳
-### Step 4
+## Step 4
 在控制台敲入：
 ```
 unsetRangeHighlight(1562665584608);
