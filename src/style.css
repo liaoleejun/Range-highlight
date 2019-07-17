@@ -1,7 +1,7 @@
-.hl-yellow {
+[data-hl-color="yellow"] {
     background-color: yellow;
 }
 
-.hl-red {
+[data-hl-color="red"] {
     background-color: red;
 }

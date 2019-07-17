@@ -119,8 +119,8 @@ function getTextNodesInRange(range) {
  */
 function highlightTextNode(textNode, color, id) {
     let span = document.createElement('span');
-    span.classList.add('hl-' + color);
     span.setAttribute('data-hl-timestamp', id);
+    span.setAttribute('data-hl-color', color);
 
     textNode.parentNode.replaceChild(span, textNode);
     span.appendChild(textNode);
