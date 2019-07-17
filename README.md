@@ -9,6 +9,7 @@
 sel = window.getSelection();
 range = sel.getRangeAt(0);
 setRangeHighlight(range);
+sel.removeAllRanges();
 ```
 此时可以看到鼠标选中的文本被高亮，并且控制台输出了一串时间戳
 ### Step 4
