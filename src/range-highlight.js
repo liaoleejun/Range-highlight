@@ -3,12 +3,14 @@
 /**
  * 设置range范围高亮
  *
- * 首先把range范围的文本节点列出来，放入一个数组。然后对各个文本节点进行高亮处理
- *
  * @param range
  * @param color
  */
 function setRangeHighlight(range, color) {
+    /*
+     * 首先把range范围的文本节点列出来，放入一个数组。然后对各个文本节点进行高亮处理
+     */
+
     if (range.collapsed) {
         return;
     }
@@ -39,12 +41,14 @@ function setRangeHighlight(range, color) {
 /**
  * 取消range范围高亮
  *
- * 抽取出文本节点, 然后替换掉原来的span父元素来达到取消高亮的效果
- * TODO 注意：有一个问题，取消高亮后被分离的文本节点没有自动合并，需要Node.normalize()处理, 这个逻辑不是看起来那么简单, 可能需要埋点做标记, 后面迭代再处理这个逻辑
- *
  * @param timestamp
  */
 function unsetRangeHighlight(timestamp) {
+    /*
+     * 抽取出文本节点, 然后替换掉原来的span父元素来达到取消高亮的效果
+     * TODO 注意：有一个问题，取消高亮后被分离的文本节点没有自动合并，需要Node.normalize()处理, 这个逻辑不是看起来那么简单, 可能需要埋点做标记, 后面迭代再处理这个逻辑
+     */
+
     // 去除包裹的标签 remove wrapper
     highlight = document.querySelectorAll('span[data-hl-timestamp="' + timestamp + '"]');
     for (let i = 0; i < highlight.length; i++) {
@@ -59,12 +63,14 @@ function unsetRangeHighlight(timestamp) {
 /**
  * 获取range范围的文本节点
  *
- * 把range范围的文本节点压入到数组nodes中, 如果range范围的开头和结尾的只是占到容器的部分, 那么需要分离节点, 这样也埋下了一个伏笔, 就是
- * 当去除高亮时, 已经分离的节点不会自动合并为一个节点。注：splitText()函数返回的新建的节点, 而老节点变成了原来的一部分。
- *
  * @param range
  */
 function getTextNodesInRange(range) {
+    /*
+     * 把range范围的文本节点压入到数组nodes中, 如果range范围的开头和结尾的只是占到容器的部分, 那么需要分离节点, 这样也埋下了一个伏笔, 就是
+     * 当去除高亮时, 已经分离的节点不会自动合并为一个节点。注：splitText()函数返回的新建的节点, 而老节点变成了原来的一部分。
+     */
+
     let nodes = [];
 
     if(range.collapsed) {
@@ -108,16 +114,18 @@ function getTextNodesInRange(range) {
 /**
  * 高亮文本节点
  *
- * some text
- * 替换为
- * <span class="hl-yellow" data-hl-timestamp="1562666410290">some text</span>
- * 其中 class="hl-yellow" 是为了高亮样式; data-hl-timestamp 是为了唯一标识这个文本, 这样方便如果有删除需要.
- *
  * @param textNode (文本节点)
  * @param color (高亮颜色)
  * @param id (传入的唯一识别该高亮的参数以便后续删除该高亮, 比如可以是时间戳)
  */
 function highlightTextNode(textNode, color, id) {
+    /*
+     * some text
+     * 替换为
+     * <span data-hl-color="yellow" data-hl-timestamp="1562666410290">some text</span>
+     * 其中 data-hl-color 是为了高亮样式; data-hl-timestamp 是为了唯一标识这个文本, 这样方便如果有删除需要.
+     */
+
     let span = document.createElement('span');
     span.setAttribute('data-hl-timestamp', id);
     span.setAttribute('data-hl-color', color);
