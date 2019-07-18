@@ -3,8 +3,8 @@
 /**
  * 设置range范围高亮
  *
- * @param range
- * @param color
+ * @param range {Range}
+ * @param color {string} 可以作为HTML属性值的任意字符串
  */
 function setRangeHighlight(range, color) {
     /*
@@ -41,7 +41,7 @@ function setRangeHighlight(range, color) {
 /**
  * 取消range范围高亮
  *
- * @param timestamp
+ * @param timestamp {number}
  */
 function unsetRangeHighlight(timestamp) {
     /*
@@ -63,7 +63,7 @@ function unsetRangeHighlight(timestamp) {
 /**
  * 获取range范围的文本节点
  *
- * @param range
+ * @param range {Range}
  */
 function getTextNodesInRange(range) {
     /*
@@ -114,9 +114,9 @@ function getTextNodesInRange(range) {
 /**
  * 高亮文本节点
  *
- * @param textNode (文本节点)
- * @param color (高亮颜色)
- * @param id (传入的唯一识别该高亮的参数以便后续删除该高亮, 比如可以是时间戳)
+ * @param textNode {Node}
+ * @param color    {string} 可以作为HTML属性值的任意字符串
+ * @param id       {string} 传入的唯一识别该高亮的参数以便后续删除该高亮, 比如可以是时间戳
  */
 function highlightTextNode(textNode, color, id) {
     /*
